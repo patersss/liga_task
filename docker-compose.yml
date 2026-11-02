@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: clients
+      POSTGRES_USER: clients
+      POSTGRES_PASSWORD: clients
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
